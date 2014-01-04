@@ -18,7 +18,7 @@ import android.widget.ListView;
 
 public class DriverOptionsFragment extends ListFragment {
 	
-	private String[] values ={"Przegl¹daj swoje trasy","Zgloœ problem firmie","Wyloguj"};
+	private String[] values ={"PrzeglÄ…daj swoje trasy","ZgloÅ› problem firmie","Wyloguj","TestChat"};
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,7 +41,7 @@ public class DriverOptionsFragment extends ListFragment {
 		startActivity(new Intent(getActivity(), ChatMain.class));
 		break;
 	}
-	case 2:{
+	case 3:{
 		startActivity(new Intent(getActivity(), DriverActivity.class));
 		
 		break;
