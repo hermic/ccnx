@@ -22,7 +22,6 @@ public final class R {
         public static final int adresTxtView=0x7f07001b;
         public static final int adressEditTxt=0x7f07001c;
         public static final int btnConnect=0x7f07000a;
-        public static final int btn_chart=0x7f070029;
         public static final int dateTxtView=0x7f070016;
         public static final int etHandle=0x7f070006;
         public static final int etNamespace=0x7f070009;
@@ -35,7 +34,7 @@ public final class R {
         public static final int loginBnt=0x7f070027;
         public static final int loginNameEditText=0x7f070021;
         public static final int loginNameTxView=0x7f070020;
-        public static final int menu_logout=0x7f07002a;
+        public static final int menu_logout=0x7f070029;
         public static final int optionListView=0x7f070028;
         public static final int pager=0x7f070000;
         public static final int passwordEditTxt=0x7f070023;
@@ -70,7 +69,6 @@ public final class R {
         public static final int login_view=0x7f030007;
         public static final int main=0x7f030008;
         public static final int options_list_view=0x7f030009;
-        public static final int report_layout=0x7f03000a;
     }
     public static final class menu {
         public static final int activity_courier_main=0x7f060000;
