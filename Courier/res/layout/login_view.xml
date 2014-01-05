@@ -8,7 +8,8 @@
     android:layout_weight="1"
     android:gravity="fill"
     android:orientation="vertical"
-    tools:ignore="AdapterViewChildren" >
+    tools:ignore="AdapterViewChildren" 
+    >
 
     <TableLayout
         android:layout_width="wrap_content"
@@ -71,13 +72,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp" >
 
-            <Button
-                android:id="@+id/loginBnt"
-                android:layout_width="0dp"
+            <CheckBox
+                android:id="@+id/isManagerChckBx"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="right|fill"
                 android:layout_weight="1"
-                android:text="Zaloguj" />
+                android:text="Kierownik" />
 
         </TableRow>
 
@@ -85,6 +86,16 @@
             android:id="@+id/tableRow4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/loginBnt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#0066FF"
+                android:minHeight="30dp"
+                android:text="Zaloguj" />
+
         </TableRow>
     </TableLayout>
  </RelativeLayout>

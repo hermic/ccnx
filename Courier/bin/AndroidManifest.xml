@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity  android:name="com.ccnx_sb15gr3_Courier.app.DriverActivity"></activity>
+        <activity android:uiOptions="splitActionBarWhenNarrow" android:name="com.ccnx_sb15gr3_Courier.app.ManagerActivity"></activity>
 		 <activity  android:name="com.ccnx_sb15gr3_Courier.app.chat.ChatMain"></activity>
 		  <activity  android:name="com.ccnx_sb15gr3_Courier.app.chat.ChatScreen"></activity>
     </application>

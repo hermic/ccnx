@@ -13,13 +13,14 @@ int id etNamespace 0x7f070009
 int id etPost 0x7f070001
 int id etRemoteHost 0x7f07000f
 int id etRemotePort 0x7f070011
+int id isManagerChckBx 0x7f070025
 int id kmEditTxt 0x7f070019
 int id kmTxtView 0x7f070018
-int id loginBnt 0x7f070025
+int id loginBnt 0x7f070027
 int id loginNameEditText 0x7f070021
 int id loginNameTxView 0x7f070020
-int id menu_settings 0x7f070028
-int id optionListView 0x7f070027
+int id menu_settings 0x7f070029
+int id optionListView 0x7f070028
 int id pager 0x7f070000
 int id passwordEditTxt 0x7f070023
 int id passwrdTxtView 0x7f070022
@@ -57,5 +58,8 @@ int string faceInstructions 0x7f040004
 int string hello 0x7f040000
 int string hello_world 0x7f040002
 int string menu_settings 0x7f040003
+int string start 0x7f040006
+int string stop 0x7f040007
+int string timer_clear 0x7f040005
 int style AppBaseTheme 0x7f050000
 int style AppTheme 0x7f050001

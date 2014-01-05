@@ -19,7 +19,7 @@ public class DriverActivity extends FragmentActivity implements TabListener {
 	
 	private String tabs[] ={"Nowa Trasa", "Opcje"};
 	private ViewPager viewPager;
-    private TabsPagerAdapter mAdapter;
+    private TabsDriverAdapter mAdapter;
     private ActionBar actionBar;
 
 	@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
@@ -31,7 +31,7 @@ public class DriverActivity extends FragmentActivity implements TabListener {
 		
 		viewPager = (ViewPager) findViewById(R.id.pager);
         actionBar = getActionBar();
-        mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+        mAdapter = new TabsDriverAdapter(getSupportFragmentManager());
  
         viewPager.setAdapter(mAdapter);
         actionBar.setHomeButtonEnabled(false);

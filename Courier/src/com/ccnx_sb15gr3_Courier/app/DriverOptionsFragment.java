@@ -37,16 +37,24 @@ public class DriverOptionsFragment extends ListFragment {
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
 	switch (position) {
-	case 1:{
-		startActivity(new Intent(getActivity(), ChatMain.class));
+	
+	case 0:{
 		break;
 	}
-	case 3:{
+	case 1:{
 		startActivity(new Intent(getActivity(), DriverActivity.class));
 		
 		break;
 
 		
+	}
+	case 2:{
+		getActivity().finish();
+		break;
+	}
+	case 3:{
+		startActivity(new Intent(getActivity(), ChatMain.class));
+		break;
 	}
 	
 	default:
