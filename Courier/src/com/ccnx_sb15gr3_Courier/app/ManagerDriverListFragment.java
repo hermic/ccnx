@@ -6,6 +6,7 @@ package com.ccnx_sb15gr3_Courier.app;
 
 import android.R;
 import android.annotation.TargetApi;
+import android.content.Intent;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -38,5 +39,7 @@ public class ManagerDriverListFragment extends ListFragment {
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
+		
+		startActivity(new Intent(getActivity(), DriverDetailsActivity.class));
 	}
 }

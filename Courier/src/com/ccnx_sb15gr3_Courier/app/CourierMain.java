@@ -39,11 +39,13 @@ public class CourierMain extends Activity implements OnClickListener, OnCheckedC
 		if(view.getId()==loginBtn.getId() && isManager){
 			Intent intent = new Intent(this, ManagerActivity.class);
 			this.startActivity(intent);
+			this.finish();
 			
 			
 		}else{
 			Intent intent = new Intent(this, DriverActivity.class);
 			this.startActivity(intent);
+			this.finish();
 		}
 		
 	}

@@ -31,18 +31,19 @@ public class ReportGenerator {
 		
 		 
 		    public void openChart(){
-		        int[] x = { 0,1,2,3,4,5,6,7 };
-		        int[] income = { 2000,2500,2700,3000,2800,3500,3700,3800};
-		        int[] expense = {2200, 2700, 2900, 2800, 2600, 3000, 3300, 3400 };
+		        //int[] x = { 0,1,2,3,4,5,6,7 };
+		        int[] distance = { 2000,2500,2700,3000,2800,3500,3700,3800};
+		        //int[] expense = {2200, 2700, 2900, 2800, 2600, 3000, 3300, 3400 };
 		 
 		        // Creating an  XYSeries for Income
 		        XYSeries incomeSeries = new XYSeries("Income");
 		        // Creating an  XYSeries for Expense
 		        XYSeries expenseSeries = new XYSeries("Expense");
 		        // Adding data to Income and Expense Series
-		        for(int i=0;i<x.length;i++){
-		            incomeSeries.add(i,income[i]);
-		            expenseSeries.add(i,expense[i]);
+		        for(int i=0;i<distance.length;i++){
+		            incomeSeries.add(i,distance[i]);
+		          
+		           // expenseSeries.add(i,expense[i]);
 		        }
 		 
 		        // Creating a dataset to hold each series
@@ -50,30 +51,31 @@ public class ReportGenerator {
 		        // Adding Income Series to the dataset
 		        dataset.addSeries(incomeSeries);
 		        // Adding Expense Series to dataset
-		        dataset.addSeries(expenseSeries);
+		        //dataset.addSeries(expenseSeries);
 		 
 		        // Creating XYSeriesRenderer to customize incomeSeries
 		        XYSeriesRenderer incomeRenderer = new XYSeriesRenderer();
 		        incomeRenderer.setColor(Color.rgb(130, 130, 230));
+		        incomeRenderer.setChartValuesSpacing((float) 1.0);
 		        incomeRenderer.setFillPoints(true);
 		        incomeRenderer.setLineWidth(2);
 		        incomeRenderer.setDisplayChartValues(true);
 		 
 		        // Creating XYSeriesRenderer to customize expenseSeries
-		        XYSeriesRenderer expenseRenderer = new XYSeriesRenderer();
+		       /* XYSeriesRenderer expenseRenderer = new XYSeriesRenderer();
 		        expenseRenderer.setColor(Color.rgb(220, 80, 80));
 		        expenseRenderer.setFillPoints(true);
 		        expenseRenderer.setLineWidth(2);
-		        expenseRenderer.setDisplayChartValues(true);
+		        expenseRenderer.setDisplayChartValues(true);*/
 		 
 		        // Creating a XYMultipleSeriesRenderer to customize the whole chart
 		        XYMultipleSeriesRenderer multiRenderer = new XYMultipleSeriesRenderer();
 		        multiRenderer.setXLabels(0);
-		        multiRenderer.setChartTitle("Income vs Expense Chart");
-		        multiRenderer.setXTitle("Year 2012");
-		        multiRenderer.setYTitle("Amount in Dollars");
+		        multiRenderer.setChartTitle("Raport Dzienny");
+		        multiRenderer.setXTitle("Kierowca");
+		        multiRenderer.setYTitle("Przejechane kilometry");
 		        multiRenderer.setZoomButtonsVisible(true);
-		        for(int i=0; i< x.length;i++){
+		        for(int i=0; i< distance.length;i++){
 		            multiRenderer.addXTextLabel(i, mMonth[i]);
 		        }
 		 
@@ -81,7 +83,7 @@ public class ReportGenerator {
 		        // Note: The order of adding dataseries to dataset and renderers to multipleRenderer
 		        // should be same
 		        multiRenderer.addSeriesRenderer(incomeRenderer);
-		        multiRenderer.addSeriesRenderer(expenseRenderer);
+		        //multiRenderer.addSeriesRenderer(expenseRenderer);
 		 
 		        // Creating an intent to plot bar chart using dataset and multipleRenderer
 		        Intent intent = ChartFactory.getBarChartIntent(this.context, dataset, multiRenderer, Type.DEFAULT);

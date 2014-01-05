@@ -42,6 +42,7 @@ public class DriverOptionsFragment extends ListFragment {
 	switch (position) {
 	
 	case 0:{
+		startActivity(new Intent(getActivity(), DriverDetailsActivity.class));
 		break;
 	}
 	case 1:{
