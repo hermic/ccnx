@@ -24,8 +24,9 @@
         </activity>
         <activity  android:name="com.ccnx_sb15gr3_Courier.app.DriverActivity"></activity>
         <activity android:name="com.ccnx_sb15gr3_Courier.app.ManagerActivity"></activity>
-		 <activity  android:name="com.ccnx_sb15gr3_Courier.app.chat.ChatMain"></activity>
+          <activity  android:name="com.ccnx_sb15gr3_Courier.app.chat.ChatMain"></activity>
 		  <activity  android:name="com.ccnx_sb15gr3_Courier.app.chat.ChatScreen"></activity>
+		  <activity android:name="org.achartengine.GraphicalActivity" />
     </application>
     
     <uses-permission android:name="android.permission.INTERNET" />

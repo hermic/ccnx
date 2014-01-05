@@ -7,6 +7,7 @@ int id LinearLayout031 0x7f07000d
 int id adresTxtView 0x7f07001b
 int id adressEditTxt 0x7f07001c
 int id btnConnect 0x7f07000a
+int id btn_chart 0x7f070029
 int id dateTxtView 0x7f070016
 int id etHandle 0x7f070006
 int id etNamespace 0x7f070009
@@ -19,7 +20,7 @@ int id kmTxtView 0x7f070018
 int id loginBnt 0x7f070027
 int id loginNameEditText 0x7f070021
 int id loginNameTxView 0x7f070020
-int id menu_logout 0x7f070029
+int id menu_logout 0x7f07002a
 int id optionListView 0x7f070028
 int id pager 0x7f070000
 int id passwordEditTxt 0x7f070023
@@ -52,8 +53,10 @@ int layout driver_travel_view 0x7f030006
 int layout login_view 0x7f030007
 int layout main 0x7f030008
 int layout options_list_view 0x7f030009
+int layout report_layout 0x7f03000a
 int menu activity_courier_main 0x7f060000
 int string app_name 0x7f040001
+int string chart_title 0x7f040008
 int string faceInstructions 0x7f040004
 int string hello 0x7f040000
 int string hello_world 0x7f040002
