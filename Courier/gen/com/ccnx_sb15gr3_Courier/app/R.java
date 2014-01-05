@@ -34,7 +34,7 @@ public final class R {
         public static final int loginBnt=0x7f070027;
         public static final int loginNameEditText=0x7f070021;
         public static final int loginNameTxView=0x7f070020;
-        public static final int menu_settings=0x7f070029;
+        public static final int menu_logout=0x7f070029;
         public static final int optionListView=0x7f070028;
         public static final int pager=0x7f070000;
         public static final int passwordEditTxt=0x7f070023;
@@ -78,7 +78,7 @@ public final class R {
         public static final int faceInstructions=0x7f040004;
         public static final int hello=0x7f040000;
         public static final int hello_world=0x7f040002;
-        public static final int menu_settings=0x7f040003;
+        public static final int menu_logout=0x7f040003;
         public static final int start=0x7f040006;
         public static final int stop=0x7f040007;
         public static final int timer_clear=0x7f040005;

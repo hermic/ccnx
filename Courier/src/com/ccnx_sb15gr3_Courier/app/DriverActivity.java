@@ -11,6 +11,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
+import android.view.MenuItem;
 
 
 
@@ -83,6 +85,20 @@ public class DriverActivity extends FragmentActivity implements TabListener {
 		
 	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.activity_courier_main, menu);
+		return true;
+	}
 
-
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle presses on the action bar items
+	   if(R.id.menu_logout==item.getItemId()){
+		   this.finish();
+	   }
+	 return super.onOptionsItemSelected(item);
+	}
+	
 }

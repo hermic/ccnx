@@ -5,7 +5,9 @@ package com.ccnx_sb15gr3_Courier.app;
 import com.ccnx_sb15gr3_Courier.app.chat.ChatMain;
 
 import android.R;
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import android.support.v4.app.ListFragment;
@@ -18,8 +20,9 @@ import android.widget.ListView;
 
 public class DriverOptionsFragment extends ListFragment {
 	
-	private String[] values ={"Przeglądaj swoje trasy","Zgloś problem firmie","Wyloguj","TestChat"};
+	private String[] values ={"Przeglądaj swoje trasy","Zgloś problem firmie","TestChat"};
 
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -48,11 +51,8 @@ public class DriverOptionsFragment extends ListFragment {
 
 		
 	}
+
 	case 2:{
-		getActivity().finish();
-		break;
-	}
-	case 3:{
 		startActivity(new Intent(getActivity(), ChatMain.class));
 		break;
 	}

@@ -19,7 +19,7 @@ int id kmTxtView 0x7f070018
 int id loginBnt 0x7f070027
 int id loginNameEditText 0x7f070021
 int id loginNameTxView 0x7f070020
-int id menu_settings 0x7f070029
+int id menu_logout 0x7f070029
 int id optionListView 0x7f070028
 int id pager 0x7f070000
 int id passwordEditTxt 0x7f070023
@@ -57,7 +57,7 @@ int string app_name 0x7f040001
 int string faceInstructions 0x7f040004
 int string hello 0x7f040000
 int string hello_world 0x7f040002
-int string menu_settings 0x7f040003
+int string menu_logout 0x7f040003
 int string start 0x7f040006
 int string stop 0x7f040007
 int string timer_clear 0x7f040005
