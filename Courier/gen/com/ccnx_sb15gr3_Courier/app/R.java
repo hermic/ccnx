@@ -93,11 +93,15 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f040001;
-        public static final int chart_title=0x7f040008;
+        public static final int chart_title=0x7f040009;
+        public static final int emptyLoginData=0x7f04000a;
         public static final int faceInstructions=0x7f040004;
         public static final int hello=0x7f040000;
         public static final int hello_world=0x7f040002;
+        public static final int login=0x7f04000b;
         public static final int menu_logout=0x7f040003;
+        public static final int password=0x7f04000c;
+        public static final int pause=0x7f040008;
         public static final int start=0x7f040006;
         public static final int stop=0x7f040007;
         public static final int timer_clear=0x7f040005;

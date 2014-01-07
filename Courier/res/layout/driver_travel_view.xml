@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="#990000"
-        android:text="@string/stop"
+        android:text="@string/pause"
         android:textSize="40sp" />
 
 </LinearLayout>

@@ -23,6 +23,8 @@ public class DriverActivity extends FragmentActivity implements TabListener {
 	private ViewPager viewPager;
     private TabsDriverAdapter mAdapter;
     private ActionBar actionBar;
+    private String login;
+    private String password;
 
 	@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 	@Override
@@ -30,6 +32,10 @@ public class DriverActivity extends FragmentActivity implements TabListener {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_courier_main);
+		Bundle extras = getIntent().getExtras();
+		login = extras.getString(getString(R.string.login));
+		password = extras.getString(getString(R.string.password));
+		
 		
 		viewPager = (ViewPager) findViewById(R.id.pager);
         actionBar = getActionBar();
