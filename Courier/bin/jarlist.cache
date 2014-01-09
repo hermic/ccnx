@@ -1,11 +1,11 @@
 # cache for current jar dependency. DO NOT EDIT.
 # format is <lastModified> <length> <SHA-1> <path>
 # Encoding is UTF-8
-1388829525000 12394 c864f03ee992e93dd5cfc97fd9972049d6837308 /home/hermic/work/co/ccnx_sb15gr3_Courier/Courier/libs/ccnChat.jar
-1388829525000 12394 c864f03ee992e93dd5cfc97fd9972049d6837308 /home/hermic/work/co/ccnx_sb15gr3_Courier/CCNx-Android-Lib/libs/ccnChat.jar
-1388856208000 1688340 a9a3e130450988f6a946837a3c709d1e228851f0 /home/hermic/work/co/ccnx_sb15gr3_Courier/Courier/libs/bcprov-jdk16-1.43.jar
-1388856208000 1688340 a9a3e130450988f6a946837a3c709d1e228851f0 /home/hermic/work/co/ccnx_sb15gr3_Courier/CCNx-Android-Lib/libs/bcprov-jdk16-1.43.jar
-1388829519000 1634108 e9313a7c0566127b0075124a3620a3901c966f8b /home/hermic/work/co/ccnx_sb15gr3_Courier/Courier/libs/ccn.jar
-1388829519000 1634108 e9313a7c0566127b0075124a3620a3901c966f8b /home/hermic/work/co/ccnx_sb15gr3_Courier/CCNx-Android-Lib/libs/ccn.jar
-1388837160000 621451 5896b0a4e377ac4242eb2bc785220c1c4fc052f4 /home/hermic/work/co/ccnx_sb15gr3_Courier/CCNx-Android-Lib/libs/android-support-v4.jar
-1388837160000 621451 5896b0a4e377ac4242eb2bc785220c1c4fc052f4 /home/hermic/work/co/ccnx_sb15gr3_Courier/Courier/libs/android-support-v4.jar
+1389295738000 12394 c864f03ee992e93dd5cfc97fd9972049d6837308 /home/hermic/work/CCNX/ccnx/CCNx-Android-Lib/libs/ccnChat.jar
+1389295738000 12394 c864f03ee992e93dd5cfc97fd9972049d6837308 /home/hermic/work/CCNX/ccnx/Courier/libs/ccnChat.jar
+1389295738000 1688340 a9a3e130450988f6a946837a3c709d1e228851f0 /home/hermic/work/CCNX/ccnx/Courier/libs/bcprov-jdk16-1.43.jar
+1389295738000 1688340 a9a3e130450988f6a946837a3c709d1e228851f0 /home/hermic/work/CCNX/ccnx/CCNx-Android-Lib/libs/bcprov-jdk16-1.43.jar
+1389295738000 1634108 e9313a7c0566127b0075124a3620a3901c966f8b /home/hermic/work/CCNX/ccnx/Courier/libs/ccn.jar
+1389295738000 1634108 e9313a7c0566127b0075124a3620a3901c966f8b /home/hermic/work/CCNX/ccnx/CCNx-Android-Lib/libs/ccn.jar
+1389295738000 621451 5896b0a4e377ac4242eb2bc785220c1c4fc052f4 /home/hermic/work/CCNX/ccnx/Courier/libs/android-support-v4.jar
+1389295737000 621451 5896b0a4e377ac4242eb2bc785220c1c4fc052f4 /home/hermic/work/CCNX/ccnx/CCNx-Android-Lib/libs/android-support-v4.jar

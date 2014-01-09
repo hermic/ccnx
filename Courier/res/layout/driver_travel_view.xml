@@ -4,22 +4,47 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
+    android:minHeight="1dp"
     android:orientation="vertical" >
 
     <TextView
         android:id="@+id/timeTxtView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:gravity="center_horizontal"
         android:text="@string/timer_clear"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="50sp" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1" >
+
+            <AutoCompleteTextView
+                android:id="@+id/startEditTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Adress startowy" />
+
+        </TableRow>
+    </TableLayout>
 
     <Button
         android:id="@+id/startBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_weight="1"
         android:background="#006600"
         android:text="@string/start"
         android:textSize="70sp" />
@@ -29,6 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_weight="1"
         android:background="#990000"
         android:text="@string/pause"
         android:textSize="40sp" />
