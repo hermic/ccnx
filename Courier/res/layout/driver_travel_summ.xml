@@ -14,7 +14,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/startEditTxt"
+        android:id="@+id/startTxtView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         
@@ -73,6 +73,26 @@
             android:layout_height="wrap_content" >
 
             <TextView
+                android:id="@+id/textView1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Adres Poczatkowy:" />
+
+            <EditText
+                android:id="@+id/startAdressEditTxt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
                 android:id="@+id/adresTxtView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -80,12 +100,13 @@
                 android:text="Adres końcowy:" />
 
             <EditText
-                android:id="@+id/adressEditTxt"
+                android:id="@+id/endAdressEditTxt"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10" />
         </TableRow>
+
     </TableLayout>
 
     <Button

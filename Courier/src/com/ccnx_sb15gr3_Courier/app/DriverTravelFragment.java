@@ -2,6 +2,7 @@ package com.ccnx_sb15gr3_Courier.app;
 
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -44,7 +45,7 @@ public class DriverTravelFragment extends Fragment implements OnClickListener {
 		stopBtn = (Button) rootView.findViewById(R.id.stopBtn);
 		stopBtn.setOnClickListener(this);
 		counterTxt = (TextView) rootView.findViewById(R.id.timeTxtView);
-		fromEditTxt = (TextView) rootView.findViewById(R.id.startEditTxt);
+		fromEditTxt = (TextView) rootView.findViewById(R.id.startTxtView);
 		// tc = new TimerCounter(this);
 
 		return rootView;
@@ -87,16 +88,25 @@ public class DriverTravelFragment extends Fragment implements OnClickListener {
 
 					@Override
 					public void onClick(View v) {
-						destinationCity = ((EditText) confirmDialog
+						/*destinationCity = ((EditText) confirmDialog
 								.findViewById(R.id.destPlaceEditTxt)).getText()
 								.toString();
-						distance = Integer.valueOf(((EditText) confirmDialog
+						/*distance = Integer.valueOf(((EditText) confirmDialog
 								.findViewById(R.id.routeKmEditTxt)).getText()
-								.toString());
+								.toString());*/
+						Intent intent = new Intent(getActivity(), DriverTravelSumm.class);
+						intent.putExtra("TIME", counterTxt.getText().toString());
+						intent.putExtra("START_POINT", fromEditTxt.getText().toString());
+						
+						
+						startActivity(intent);
+						
 						confirmDialog.dismiss();
+						
+						
 
-						addRouteToDB(fromEditTxt.getText().toString(),
-								destinationCity, distance);
+						/*addRouteToDB(fromEditTxt.getText().toString(),
+								destinationCity, distance);*/
 					}
 				});
 

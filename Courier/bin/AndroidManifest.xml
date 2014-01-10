@@ -26,8 +26,10 @@
         <activity android:name="com.ccnx_sb15gr3_Courier.app.ManagerActivity"></activity>
         <activity android:name="com.ccnx_sb15gr3_Courier.app.RouteDetailsActivity"></activity>
         <activity android:name="com.ccnx_sb15gr3_Courier.app.DriverDetailsActivity"></activity>
+          <activity android:name="com.ccnx_sb15gr3_Courier.app.DriverTravelSumm"></activity>
           <activity  android:name="com.ccnx_sb15gr3_Courier.app.chat.ChatMain"></activity>
 		  <activity  android:name="com.ccnx_sb15gr3_Courier.app.chat.ChatScreen"></activity>
+		  
 		  <activity android:name="org.achartengine.GraphicalActivity" />
     </application>
     
