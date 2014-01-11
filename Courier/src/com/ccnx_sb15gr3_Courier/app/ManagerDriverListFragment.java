@@ -6,6 +6,7 @@ package com.ccnx_sb15gr3_Courier.app;
 
 import android.R;
 import android.annotation.TargetApi;
+import android.app.ProgressDialog;
 import android.content.Intent;
 
 import android.os.Build;
@@ -30,6 +31,7 @@ public class ManagerDriverListFragment extends ListFragment {
 		
 		View rootView =inflater.inflate(R.layout.list_content, container, false);
 		
+		getDriverList();
 		    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
 		        android.R.layout.simple_list_item_1, values );
 		    setListAdapter(adapter);
@@ -40,6 +42,14 @@ public class ManagerDriverListFragment extends ListFragment {
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		
-		startActivity(new Intent(getActivity(), DriverDetailsActivity.class));
+		Intent intent = new Intent(getActivity(), DriverDetailsActivity.class);
+		intent.putExtra("DRIVER", values[position]);
+		
+		startActivity(intent);
+	}
+	
+	private void getDriverList(){
+		final ProgressDialog ringProgressDialog = ProgressDialog.show(getActivity(), "Proszę czekać ...", "Pobiernanie danych ...", true);
+		   ringProgressDialog.setCancelable(true);
 	}
 }

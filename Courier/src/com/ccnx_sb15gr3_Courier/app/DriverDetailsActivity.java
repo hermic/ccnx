@@ -1,6 +1,7 @@
 package com.ccnx_sb15gr3_Courier.app;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,7 @@ public class DriverDetailsActivity extends Activity {
 	private TextView driverName;
 	private ListView routesLtView;
 	private String values [] = {"trasa1","trasa2"};
+	private String driver;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,11 @@ public class DriverDetailsActivity extends Activity {
 		setContentView(R.layout.driver_details);
 		driverName = (TextView) findViewById(R.id.driverNameTxtView);
 		routesLtView = (ListView) findViewById(R.id.routesListView);
+		Bundle extras = getIntent().getExtras();
+		driver=extras.getString("DRIVER");
+		
+		
+		getRouteList(driver);
 		
 		 ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 			        android.R.layout.simple_list_item_1, values );
@@ -45,4 +52,9 @@ public class DriverDetailsActivity extends Activity {
 	
 	}
 
+	private void getRouteList(String driverName){
+		final ProgressDialog ringProgressDialog = ProgressDialog.show(this, "Proszę czekać ...", "Pobieranie danych ...", true);
+		   ringProgressDialog.setCancelable(true);
+	}
+	
 }

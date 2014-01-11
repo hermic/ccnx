@@ -1,6 +1,7 @@
 package com.ccnx_sb15gr3_Courier.app;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -33,8 +34,13 @@ public class RouteDetailsActivity extends Activity {
 		
 		Bundle extras = getIntent().getExtras();
 		driverName.setText(extras.getString("ROUTE"));
+		getRouteDetails();
 		
-		
+	}
+	
+	private void getRouteDetails(){
+		final ProgressDialog ringProgressDialog = ProgressDialog.show(this, "Proszę czekać ...", "Pobieranie danych ...", true);
+		   ringProgressDialog.setCancelable(true);
 	}
 
 }

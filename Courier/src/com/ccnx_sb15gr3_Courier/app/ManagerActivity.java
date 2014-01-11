@@ -5,6 +5,7 @@ import android.app.ActionBar.Tab;
 import android.app.ActionBar.TabListener;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -45,6 +46,10 @@ public class ManagerActivity extends FragmentActivity implements TabListener {
             actionBar.addTab(actionBar.newTab().setText(tab_name)
                     .setTabListener(this));
             }
+        
+        login(login, password);
+        	
+        
         /**
          * on swiping the viewpager make respective tab selected
          * */
@@ -104,4 +109,15 @@ public class ManagerActivity extends FragmentActivity implements TabListener {
 	 return super.onOptionsItemSelected(item);
 	}
 
+	private boolean login(String login, String password){
+		final ProgressDialog ringProgressDialog = ProgressDialog.show(this, "Proszę czekać ...", "Logowanie ...", true);
+			   ringProgressDialog.setCancelable(true);
+			   
+			   
+		
+		return false;
+		
+	}
+	
+	
 }

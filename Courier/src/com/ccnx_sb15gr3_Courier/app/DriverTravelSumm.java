@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -47,6 +48,9 @@ public class DriverTravelSumm extends Activity {
 					public void onClick(View v) {
 						if(distance.getText().length()<1 || endAdressEdtTxt.getText().length()<1){
 							Toast.makeText(DriverTravelSumm.this, "Wypełnij wszystkie pola", Toast.LENGTH_SHORT).show();
+						}else{
+							uploadData();
+							
 						}
 						
 					}
@@ -54,5 +58,18 @@ public class DriverTravelSumm extends Activity {
 				
 				
 	}
+	
+	private void uploadData(){
+	
+			final ProgressDialog ringProgressDialog = ProgressDialog.show(this, "Proszę czekać ...", "Zapisywanie danych ...", true);
+				   ringProgressDialog.setCancelable(true);
+				   
+			
+	Toast.makeText(this, "Dane zostały poprawnie zapisane do bazy danych", Toast.LENGTH_SHORT).show();	
+	
+	}
+		
+		
+	
 
 }
