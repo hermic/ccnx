@@ -31,13 +31,17 @@ public class CourierMain extends Activity implements OnClickListener, OnCheckedC
 		passwordTxtView = (TextView) findViewById(R.id.passwordEditTxt);
 		loginBtn.setOnClickListener(this);
 		isManCheckBox.setOnCheckedChangeListener(this);
+
+		ClientManager.getInstance().Init("test", "/courier", "10.0.2.2", "9695", this);
+		ClientManager.getInstance().RunWorker();
+		ClientManager.getInstance().CheckForCCNX();	
 	}
 
 
 
 	@Override
 	public void onClick(View view) {
-		
+		User user = ClientManager.getInstance().login("test", "1234");
 		if(loginTxtView.getText().length()<1 || passwordTxtView.getText().length()<1){
 			Toast.makeText(this, R.string.emptyLoginData, Toast.LENGTH_LONG).show();
 			
