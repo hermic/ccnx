@@ -24,7 +24,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 
 
-public class CourierMain extends Activity implements OnClickListener, OnCheckedChangeListener{
+public class CourierMain extends Activity implements OnClickListener, OnCheckedChangeListener,CCNxListener{
 	
 	private Button loginBtn;
 	private CheckBox isManCheckBox;
@@ -69,8 +69,10 @@ public class CourierMain extends Activity implements OnClickListener, OnCheckedC
 	@Override
 	public void onClick(View view) {
 		
-		TestTask test = new TestTask();
-		test.execute("test");
+		ConnectorTask test = new ConnectorTask(this,this);
+		test.execute("LOGIN","JA","PASSWORD");
+		
+		
 	
 		//User user = ClientManager.getInstance().login(loginTxtView.getText().toString(), passwordTxtView.getText().toString());
 		/*if(loginTxtView.getText().length()<1 || passwordTxtView.getText().length()<1){
@@ -108,101 +110,15 @@ public class CourierMain extends Activity implements OnClickListener, OnCheckedC
 		
 	}
 	
-	 private class TestTask extends AsyncTask<String, Void, String>  implements ChatCallback{
-		    private ChatWorker _worker;
-			
-		    private boolean isConnected=false;
-		    
-		    private String respond="";
+	 
 
-		@Override
-		protected String doInBackground(String... urls) {
-			String response = "";
 
-			int i = 0;
 
-			while (true) {
-				
-				if (respond.length()>2) {
-					Log.d("PREPERE TO SENT","");
-					
-
-						try {
-							Thread.sleep(1000);
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						UiToCcn("Test" + i);
-						
-						while(true){
-							
-							if(respond.contains("hejka")){
-								return response;
-							
-							
-							}else{
-								
-								try {
-									Thread.sleep(1000);
-								} catch (InterruptedException e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
-								}
-								
-							}
-						}
-						
-
-						
-					
-					
-				}
-			i++;}
-
-		}
-			
-			@Override
-			protected void onPreExecute() {
-				// TODO Auto-generated method stub
-				super.onPreExecute();
-				 _worker =  new ChatWorker(getApplicationContext(), this);
-			      _worker.start("test", "/ccnchat", "10.0.2.2", "9695");
-			}
-
-			protected void UiToCcn(String s) {
-				_worker.send(s);
-			}
-
-		    @Override
-		    protected void onPostExecute(String result) {
-		     loginTxtView.setText(respond);
-		    }
-
-			@Override
-			public void recv(Serializable message) {
-				Message msg = Message.obtain();
-				msg.obj = message;
-				Log.d("MESSAGE RECV",(String)msg.obj);
-				respond=(String)msg.obj;
-				//Toast.makeText(getApplicationContext(), (String) msg.obj, Toast.LENGTH_LONG).show();*/
-				
-			}
-	
-
-			@Override
-			public void ccnxServices(boolean ok) {
-				if ( ok ) {
-					//Toast.makeText(getApplicationContext(), "CCN Services now ready -- let's chat!", Toast.LENGTH_LONG).show();
-				isConnected=true;
-					
-				}else{
-					//Toast.makeText(getApplicationContext(), "CCN Service error, cannot chat!", Toast.LENGTH_LONG).show();
-				
-				}
-				
-			}
-		  }
+	@Override
+	public void messageToUI(String message) {
+		Log.d("MS",message);
+		
+	}
 
 	
 	 
