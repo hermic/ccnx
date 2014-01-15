@@ -28,7 +28,7 @@ import android.util.Log;
  * All the CCNx code for Chat is in this worker thread.  It's basically the code
  * from the original ccnChat wrapped inside the worker thread.
  */
-public class ClientWorker implements Runnable, CCNxServiceCallback, CCNObjectCallBack {
+public class ClientWorker implements Runnable, CCNxServiceCallback, CCNChatCallback, CCNObjectCallBack {
 	protected final static String TAG="ChatWorker";
 
 	/**
@@ -57,7 +57,7 @@ public class ClientWorker implements Runnable, CCNxServiceCallback, CCNObjectCal
 			try {
 				_remotehost = remotehost;
 				_remoteport = remoteport;
-				_manager = new Manager(this, namespace);
+				_manager = new CCNChatNet(this, namespace);
 				_running = true;
 				_finished = false;
 				_thd.start();
@@ -109,7 +109,7 @@ public class ClientWorker implements Runnable, CCNxServiceCallback, CCNObjectCal
 	public boolean send(Serializable text) {
 
 		try {
-			_manager.sendMessage(text);
+			_manager.sendMessage("text");
 		} catch(Exception e) {
 			return false;
 		}
@@ -128,7 +128,7 @@ public class ClientWorker implements Runnable, CCNxServiceCallback, CCNObjectCal
 	// ==============================================================================
 	// Internal implementation
 
-	protected Manager _manager;
+	protected CCNChatNet _manager;
 	protected final ClientManager _callback;
 	protected final Context _context;
 	protected CCNxServiceControl _ccnxService;
@@ -227,6 +227,12 @@ public class ClientWorker implements Runnable, CCNxServiceCallback, CCNObjectCal
 	@Override
 	public void recvObject(Serializable msg) {
 		_callback.recv(msg);
+		
+	}
+
+	@Override
+	public void recvMessage(String arg0) {
+		_callback.recv(arg0);
 		
 	}
 }

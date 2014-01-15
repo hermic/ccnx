@@ -68,6 +68,7 @@ public class ClientManager implements ChatCallback {
 	{
 		try {
 			this._respond = (Respond) ((CCNGenericObject) message).object();
+			Request req = (Request) ((CCNGenericObject) message).object();
 			this._pendingRequests.remove(this._respond.get_request());
 		} catch (ContentNotReadyException e) {
 			// TODO Auto-generated catch block

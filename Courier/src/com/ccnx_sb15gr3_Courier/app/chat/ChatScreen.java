@@ -1,6 +1,8 @@
 package com.ccnx_sb15gr3_Courier.app.chat;
 
 
+import java.io.Serializable;
+
 import org.ccnx.ccn.config.UserConfiguration;
 
 import com.ccnx_sb15gr3_Courier.app.R;
@@ -207,5 +209,11 @@ public class ChatScreen extends Activity implements OnKeyListener, ChatCallback 
 		} else {
 			recv("CCN Service error, cannot chat!\n");
 		}
+	}
+
+	@Override
+	public void recv(Serializable message) {
+		// TODO Auto-generated method stub
+		
 	}
 }

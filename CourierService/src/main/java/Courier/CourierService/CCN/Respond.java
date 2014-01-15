@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class Respond implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4416852070899250402L;
 	public Request get_request() {
 		return _request;
 	}
