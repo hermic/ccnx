@@ -10,16 +10,42 @@ import android.util.Log;
 import com.ccnx_sb15gr3_Courier.app.chat.ChatCallback;
 import com.ccnx_sb15gr3_Courier.app.chat.ChatWorker;
 
-
 public class ConnectorTask extends AsyncTask<String, Void, String>  implements ChatCallback{
     private ChatWorker _worker;
 	
     
     private boolean isConnected=false;
+    private boolean isReadyToSend= false;
     private String respond="";
+    
+    public enum Request{LOGIN,GET_DRIVERS,GET_ROUTES};
+    
 
 @Override
 protected String doInBackground(String... urls) {
+	
+	
+	
+	Request request=Request.valueOf(urls[0]);
+	
+	
+	switch (request) {
+	
+	case LOGIN:{
+		
+		Log.d("Request Login", urls[1]);
+		
+		break;
+	}
+		
+	
+
+	default:
+		break;
+	};
+
+	
+	
 	String response = "";
 
 	int i = 0;
