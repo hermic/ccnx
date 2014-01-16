@@ -4,9 +4,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.logging.Level;
 
-import org.ccnx.android.ccnlib.CCNxConfiguration;
-import org.ccnx.android.ccnlib.CCNxServiceCallback;
-import org.ccnx.android.ccnlib.CCNxServiceStatus.SERVICE_STATUS;
+
 import org.ccnx.ccn.apps.ccnchat.CCNChatNet;
 import org.ccnx.ccn.config.ConfigurationException;
 import org.ccnx.ccn.io.ErrorStateException;
