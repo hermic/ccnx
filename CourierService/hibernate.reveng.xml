@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="CourierDB" match-name="Car"/>
+  <table-filter match-catalog="CourierDB" match-name="Log"/>
+  <table-filter match-catalog="CourierDB" match-name="Route"/>
+  <table-filter match-catalog="CourierDB" match-name="RouteInformation"/>
+  <table-filter match-catalog="CourierDB" match-name="User"/>
+  <table-filter match-catalog="CourierDB" match-name="User_Car"/>
+</hibernate-reverse-engineering>
