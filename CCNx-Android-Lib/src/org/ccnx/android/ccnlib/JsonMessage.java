@@ -2,6 +2,8 @@ package org.ccnx.android.ccnlib;
 
 public class JsonMessage {
 	
+	public enum Request{LOGIN,GET_DRIVERS,GET_ROUTES,ADD_ROUTE};
+	
 	private boolean isRequest;
 	private boolean isRespond;
 	private String Tag;
