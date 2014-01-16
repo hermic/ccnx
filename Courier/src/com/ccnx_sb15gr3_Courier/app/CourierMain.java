@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import com.ccnx_sb15gr3_Courier.app.chat.ChatCallback;
 import com.ccnx_sb15gr3_Courier.app.chat.ChatWorker;
+import com.ccnx_sb15gr3_Courier.model.User;
+import com.google.gson.Gson;
 
 
 import android.os.AsyncTask;
@@ -116,6 +118,9 @@ public class CourierMain extends Activity implements OnClickListener, OnCheckedC
 
 	@Override
 	public void messageToUI(String message) {
+		Gson gson = new Gson();
+		User user = gson.fromJson(message, User.class);
+		Log.d("USER",user.getPassword());
 		Log.d("MS",message);
 		
 	}

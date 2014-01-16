@@ -32,12 +32,16 @@ public class ConnectorTask extends AsyncTask<String, Void, String>  implements C
 
 	private String respondString;
 
+
+	private boolean isRespondProvided=false;
+	private Request request;
+
 @Override
 protected String doInBackground(String... urls) {
 	
 	
 
-	Request request=Request.valueOf(urls[0]);
+	request=Request.valueOf(urls[0]);
 	
 	
 	switch (request) {
@@ -81,7 +85,7 @@ protected String doInBackground(String... urls) {
 
 	while (true) {
 		
-		if (respond.length()>2) {
+		if (respond.contains("entered")) {
 			Log.d("PREPERE TO SENT","");
 			
 
@@ -94,13 +98,9 @@ protected String doInBackground(String... urls) {
 				
 				UiToCcn(requestSting);
 				
-				while(true){
-					
-					if(respond.contains("hejka")){
-						return respond;
+				while(!isRespondProvided){
 					
 					
-					}else{
 						
 						try {
 							Thread.sleep(1000);
@@ -109,8 +109,9 @@ protected String doInBackground(String... urls) {
 							e.printStackTrace();
 						}
 						
-					}
+					
 				}
+				return respond;
 				
 
 				
@@ -136,7 +137,7 @@ protected String doInBackground(String... urls) {
     @Override
     protected void onPostExecute(String result) {
     // loginTxtView.setText(respond);
-     ccnxListener.messageToUI(respond);
+     ccnxListener.messageToUI(respondString);
     }
 
 	@Override
@@ -146,13 +147,31 @@ protected String doInBackground(String... urls) {
 		Log.d("MESSAGE RECV",(String)msg.obj);
 		String messageTmp=(String)msg.obj;
 		respond=messageTmp;
-		if(messageTmp.contains(Request.LOGIN.toString()) && messageTmp.contains("isRespond\":false")){
+		
+		
+		if(messageTmp.contains("isRespond\":true")){
 			String tmp[]=messageTmp.split("]: ");
-			
-			User user=gson.fromJson(tmp[1], User.class);
-			
 			respondString=tmp[1];
 			Log.d("JSON RESPONSE",respondString);
+			isRespondProvided=true;
+			
+			if(messageTmp.contains(Request.LOGIN.toString())){
+				
+				
+			}else if(messageTmp.contains(Request.GET_DRIVERS.toString())){
+				
+			
+		}else if(messageTmp.contains(Request.GET_ROUTES.toString())){
+			
+		}else if(messageTmp.contains(Request.ADD_ROUTE.toString())){
+			
+		}
+		
+		
+						
+			
+		}else{
+			isRespondProvided=false;
 		}
 	
 		
