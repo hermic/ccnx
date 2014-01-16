@@ -2,6 +2,8 @@ package com.ccnx_sb15gr3_Courier.app;
 
 import java.io.Serializable;
 
+import Courier.CourierService.Models.Test;
+//import Courier.CourierService.Models.User;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Message;
@@ -9,6 +11,9 @@ import android.util.Log;
 
 import com.ccnx_sb15gr3_Courier.app.chat.ChatCallback;
 import com.ccnx_sb15gr3_Courier.app.chat.ChatWorker;
+import com.ccnx_sb15gr3_Courier.model.User;
+//import com.ccnx_sb15gr3_Courier.model.User;
+import com.google.gson.Gson;
 
 public class ConnectorTask extends AsyncTask<String, Void, String>  implements ChatCallback{
     private ChatWorker _worker;
@@ -20,12 +25,14 @@ public class ConnectorTask extends AsyncTask<String, Void, String>  implements C
     
     public enum Request{LOGIN,GET_DRIVERS,GET_ROUTES};
     
+    private String requestSting;
+    private Gson gson = new Gson();
 
 @Override
 protected String doInBackground(String... urls) {
 	
 	
-	
+
 	Request request=Request.valueOf(urls[0]);
 	
 	
@@ -33,11 +40,29 @@ protected String doInBackground(String... urls) {
 	
 	case LOGIN:{
 		
-		Log.d("Request Login", urls[1]);
+				Log.d("Request Login", urls[1]);
+				
+				
+				User user = new User();
+				user.setLogin(urls[1]);
+				user.setPassword(urls[2]);
+				user.setTag("LOGIN");
+				user.isRequest();
+				requestSting=gson.toJson(user);
+				Log.d("JSON", requestSting);
+				
+				
+				
 		
 		break;
 	}
-		
+	
+	case GET_DRIVERS:{
+		break;
+	}
+	case GET_ROUTES:{
+		break;
+	}
 	
 
 	default:
@@ -62,8 +87,8 @@ protected String doInBackground(String... urls) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				if(urls[0].contains("LOGIN"))
-				UiToCcn(urls[1]+" "+urls[2]);
+				
+				UiToCcn(requestSting);
 				
 				while(true){
 					
@@ -116,7 +141,15 @@ protected String doInBackground(String... urls) {
 		msg.obj = message;
 		Log.d("MESSAGE RECV",(String)msg.obj);
 		respond=(String)msg.obj;
+		if(respond.contains(Request.LOGIN.toString())){
+			String tmp[]=respond.split("]: ");
+			
+			User user=gson.fromJson(tmp[1], User.class);
+			Log.d("JSON RESPONSE",user.getLogin() );
+		}
+	
 		
+	
 		
 		//Toast.makeText(getApplicationContext(), (String) msg.obj, Toast.LENGTH_LONG).show();*/
 		
