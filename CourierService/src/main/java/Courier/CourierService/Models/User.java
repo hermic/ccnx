@@ -103,7 +103,7 @@ public class User extends JsonMessage implements java.io.Serializable {
 		this.type = type;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	public Set<RouteInformation> getRouteInformations() {
 		return this.routeInformations;
 	}
@@ -112,7 +112,7 @@ public class User extends JsonMessage implements java.io.Serializable {
 		this.routeInformations = routeInformations;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "User_Car", catalog = "CourierDB", joinColumns = { @JoinColumn(name = "UserId", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "CarId", nullable = false, updatable = false) })
 	public Set<Car> getCars() {
 		return this.cars;

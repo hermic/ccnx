@@ -1,7 +1,9 @@
 package CourierService.hibernate;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -21,21 +23,25 @@ public class App {
 		// SessionFactory sf = HibernateUtil.getSessionFactory();
 		// Session session = sf.openSession();
 		// session.beginTransaction();
-//		UserService serwis = new UserServiceImpl();
-		User userek = new User();
-		userek.setLogin("driverB");
-		userek.setPassword("123");
-		userek.setType("Kierowca");
-		userek.setEmail("test@");
+		UserService serwis = new UserServiceImpl();
+		//List<User> list = serwis.getAllDrivers();
+		//Set<RouteInformation> infos = list.get(1).getRouteInformations();
+		//List<RouteInformation> bla = new ArrayList<RouteInformation>(infos);
+		//System.out.print("asd");
+		//		User userek = new User();
+//		userek.setLogin("driverB");
+//		userek.setPassword("123");
+//		userek.setType("Kierowca");
+//		userek.setEmail("test@");
 //		serwis.addUser(userek);
 //		User user = serwis.login("test", "202cb962ac59075b964b07152d234b70");
 //		System.out.print(user.getEmail() + "\n");
-		RouteService routeSerwis = new RouteServiceImpl();
-		List<RouteInformation> all = routeSerwis.getRoutesForDriver(userek);
+//		RouteService routeSerwis = new RouteServiceImpl();
+//		List<RouteInformation> all = routeSerwis.getRoutesForDriver(userek);
 //		List<RouteInformation> all = routeSerwis.getAllRoutes();
-		for (RouteInformation info : all) {
-			System.out.print(info.getFuel() + "\n");
-		}
+//		for (RouteInformation info : all) {
+//			System.out.print(info.getFuel() + "\n");
+//		}
 //
 		//Route route = new Route();
 		//route.setStartPoint("hibernated");

@@ -2,6 +2,7 @@ package Courier.CourierService.Services;
 
 import java.util.List;
 
+import Courier.CourierService.Models.Manager;
 import Courier.CourierService.Models.User;
 
 public interface UserService {
@@ -19,11 +20,12 @@ public interface UserService {
 	 * 
 	 * @return liste kierowcow
 	 */
-	List<User> getAllDrivers();
+	Manager getAllDrivers();
 	
 	/**
 	 * Dodaje usera.
 	 * @param user
 	 */
 	void addUser(User user);
+	
 }

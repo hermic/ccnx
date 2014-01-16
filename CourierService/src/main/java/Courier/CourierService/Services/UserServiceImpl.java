@@ -2,6 +2,7 @@ package Courier.CourierService.Services;
 
 import java.util.List;
 
+import Courier.CourierService.Models.Manager;
 import Courier.CourierService.Models.User;
 import Courier.CourierService.Models.UserDAO;
 import Courier.CourierService.Models.UserDAO.UserType;
@@ -19,9 +20,11 @@ private UserDAO userDAO = new UserDAO();
 		return null;
 	}
 
-	public List<User> getAllDrivers() {
+	public Manager getAllDrivers() {
 		List<User> users = userDAO.findByType(UserType.Kierowca);
-		return users;
+		Manager manager = new Manager();
+		manager.setUsers(users);
+		return manager;
 	}
 
 	public void addUser(User user) {
