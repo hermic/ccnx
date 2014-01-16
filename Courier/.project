@@ -3,6 +3,8 @@
 	<name>Courier</name>
 	<comment></comment>
 	<projects>
+		<project>CCNx-Android-Lib</project>
+		<project>CourierService</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

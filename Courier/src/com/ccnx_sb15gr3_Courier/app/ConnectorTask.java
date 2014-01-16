@@ -2,8 +2,10 @@ package com.ccnx_sb15gr3_Courier.app;
 
 import java.io.Serializable;
 
-import Courier.CourierService.Models.Test;
-//import Courier.CourierService.Models.User;
+import org.ccnx.android.ccnlib.JsonMessage.Request;
+
+
+
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Message;
@@ -12,7 +14,6 @@ import android.util.Log;
 import com.ccnx_sb15gr3_Courier.app.chat.ChatCallback;
 import com.ccnx_sb15gr3_Courier.app.chat.ChatWorker;
 import com.ccnx_sb15gr3_Courier.model.User;
-//import com.ccnx_sb15gr3_Courier.model.User;
 import com.google.gson.Gson;
 
 public class ConnectorTask extends AsyncTask<String, Void, String>  implements ChatCallback{
@@ -23,10 +24,13 @@ public class ConnectorTask extends AsyncTask<String, Void, String>  implements C
     private boolean isReadyToSend= false;
     private String respond="";
     
-    public enum Request{LOGIN,GET_DRIVERS,GET_ROUTES};
+    
     
     private String requestSting;
     private Gson gson = new Gson();
+
+
+	private String respondString;
 
 @Override
 protected String doInBackground(String... urls) {
@@ -47,7 +51,7 @@ protected String doInBackground(String... urls) {
 				user.setLogin(urls[1]);
 				user.setPassword(urls[2]);
 				user.setTag("LOGIN");
-				user.isRequest();
+				user.setRequest(true);
 				requestSting=gson.toJson(user);
 				Log.d("JSON", requestSting);
 				
@@ -140,12 +144,15 @@ protected String doInBackground(String... urls) {
 		Message msg = Message.obtain();
 		msg.obj = message;
 		Log.d("MESSAGE RECV",(String)msg.obj);
-		respond=(String)msg.obj;
-		if(respond.contains(Request.LOGIN.toString())){
-			String tmp[]=respond.split("]: ");
+		String messageTmp=(String)msg.obj;
+		respond=messageTmp;
+		if(messageTmp.contains(Request.LOGIN.toString()) && messageTmp.contains("isRespond\":false")){
+			String tmp[]=messageTmp.split("]: ");
 			
 			User user=gson.fromJson(tmp[1], User.class);
-			Log.d("JSON RESPONSE",user.getLogin() );
+			
+			respondString=tmp[1];
+			Log.d("JSON RESPONSE",respondString);
 		}
 	
 		

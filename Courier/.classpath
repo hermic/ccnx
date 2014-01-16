@@ -11,6 +11,7 @@
 	<classpathentry kind="lib" path="libs/android-support-v4.jar"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry kind="lib" path="libs/achartengine-1.1.0.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/CourierService"/>
+	<classpathentry kind="lib" path="/CourierService/lib/kxml2-2.3.0.jar"/>
+	<classpathentry kind="lib" path="libs/gson-2.2.4.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

@@ -5,7 +5,7 @@ import java.io.Serializable;
 import com.ccnx_sb15gr3_Courier.app.chat.ChatCallback;
 import com.ccnx_sb15gr3_Courier.app.chat.ChatWorker;
 
-import CourierModels.User;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,7 +31,7 @@ public class CourierMain extends Activity implements OnClickListener, OnCheckedC
 	private boolean isManager;
 	private TextView loginTxtView; 
 	private TextView passwordTxtView;
-	private ComunnicationManger manager;
+
 
 	private Handler handler;
 	@Override
