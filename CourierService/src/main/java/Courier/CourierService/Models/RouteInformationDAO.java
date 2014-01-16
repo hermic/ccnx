@@ -34,23 +34,21 @@ public class RouteInformationDAO extends GenericDAO<RouteInformation, Integer>{
 		Session hibernateSession = this.getSession();
 		List<RouteInformation> routes = null;
 		Transaction tx = hibernateSession.beginTransaction();
-//		SELECT *
-//		FROM `RouteInformation`
-//		WHERE `UserId` = (
-//		SELECT UserId
-//		FROM User
-//		WHERE Login = 'driverA' ) 
-//        String sql = "SELECT u FROM RouteInformation u WHERE UserId = "
-//        		+ "(SELECT usr FROM User WHERE Login = :login)"; 
-		String sql = "SELECT u FROM RouteInformation u WHERE UserId = 1";
-        Query query = hibernateSession.createQuery(sql);//.setParameter("login", user.getLogin());     
+		String sql = "from RouteInformation table1 where table1.user in (select table2.userId from User table2 where login = :login)";
+        Query query = hibernateSession.createQuery(sql).setParameter("login", user.getLogin());     
         routes = findMany(query);
         tx.commit();
 		return routes;	
 	}
 
 	public List<RouteInformation> findByUserId(Integer userId) {
-		// TODO Auto-generated method stub
-		return null;
+		Session hibernateSession = this.getSession();
+		List<RouteInformation> routes = null;
+		Transaction tx = hibernateSession.beginTransaction();
+		String sql = "from RouteInformation table1 where table1.user in (select table2.userId from User table2 where userId = :id)";
+        Query query = hibernateSession.createQuery(sql).setParameter("id", userId);     
+        routes = findMany(query);
+        tx.commit();
+		return routes;	
 	}
 }
