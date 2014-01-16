@@ -2,13 +2,15 @@ package com.ccnx_sb15gr3_Courier.app;
 
 import java.io.Serializable;
 
+import com.ccnx_sb15gr3_Courier.app.chat.ChatCallback;
+import com.ccnx_sb15gr3_Courier.app.chat.ChatWorker;
+
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Message;
 import android.util.Log;
 
-import com.ccnx_sb15gr3_Courier.app.chat.ChatCallback;
-import com.ccnx_sb15gr3_Courier.app.chat.ChatWorker;
+
 
 public class ConnectorTask extends AsyncTask<String, Void, String>  implements ChatCallback{
     private ChatWorker _worker;
