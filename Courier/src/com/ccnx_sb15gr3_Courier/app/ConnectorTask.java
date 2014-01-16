@@ -10,6 +10,7 @@ import android.util.Log;
 import com.ccnx_sb15gr3_Courier.app.chat.ChatCallback;
 import com.ccnx_sb15gr3_Courier.app.chat.ChatWorker;
 
+
 public class ConnectorTask extends AsyncTask<String, Void, String>  implements ChatCallback{
     private ChatWorker _worker;
 	

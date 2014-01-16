@@ -7,8 +7,9 @@ import Courier.CourierService.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import Courier.CourierService.HibernateUtil;
+
 import CourierModels.Route;
+import CourierService.hibernate.HibernateUtil;
 
 public class RouteRepository {
 
