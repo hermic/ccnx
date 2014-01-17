@@ -22,6 +22,8 @@ public class UserDAO extends GenericDAO<User, Integer> {
         String sql = "SELECT u FROM User u WHERE u.login = :name AND u.password = :password";
         Query query = hibernateSession.createQuery(sql).setParameter("name", name).setParameter("password", password);
         person = findOne(query);
+        person.getCars();
+        person.getRouteInformations();
         tx.commit();
         return person;
     }
