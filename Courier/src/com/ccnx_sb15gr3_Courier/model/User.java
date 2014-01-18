@@ -1,5 +1,6 @@
 package com.ccnx_sb15gr3_Courier.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -7,8 +8,12 @@ import org.ccnx.android.ccnlib.JsonMessage;
 
 
 
-public class User extends JsonMessage{
+public class User extends JsonMessage implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -373945999108016882L;
 	private String login;
 	private String password;
 	private Integer userId;

@@ -1,5 +1,6 @@
 package com.ccnx_sb15gr3_Courier.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -7,8 +8,12 @@ import org.ccnx.android.ccnlib.JsonMessage;
 
 
 
-public class Car extends JsonMessage {
+public class Car extends JsonMessage implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer carId;
 	public Integer getCarId() {
 		return carId;

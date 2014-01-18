@@ -1,6 +1,16 @@
 package com.ccnx_sb15gr3_Courier.app;
 
 
+import java.io.IOException;
+import java.util.Date;
+
+import com.ccnx_sb15gr3_Courier.model.Route;
+import com.ccnx_sb15gr3_Courier.model.User;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+
 import android.annotation.TargetApi;
 import android.app.ActionBar.Tab;
 
@@ -8,24 +18,30 @@ import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.app.ActionBar.TabListener;
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class DriverActivity extends FragmentActivity implements TabListener {
+public class DriverActivity extends FragmentActivity implements TabListener,CCNxListener {
 	
+	
+	private User user;
 	private String tabs[] ={"Nowa Trasa", "Opcje"};
 	private ViewPager viewPager;
     private TabsDriverAdapter mAdapter;
     private ActionBar actionBar;
     private String login;
     private String password;
+	private Route route;
 
 	@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 	@Override
@@ -110,13 +126,56 @@ public class DriverActivity extends FragmentActivity implements TabListener {
 	}
 	
 	private boolean login(String login, String password){
-		final ProgressDialog ringProgressDialog = ProgressDialog.show(this, "Proszę czekać ...", "Logowanie ...", true);
-			   ringProgressDialog.setCancelable(true);
+		
 			   
-			   
+			  /* ConnectorTask test = new ConnectorTask(this,this);
+				test.execute("LOGIN","user2","123");*/
+				
+				
 		
 		return false;
 		
 	}
+
+	public void setRoute(Route route){
+		this.route = route;
+	}
+
+	@Override
+	public void messageToUI(String message) {
+		/*Gson gson = new Gson();
+		User userFromMessage = gson.fromJson(message, User.class);*/
+		/*ObjectMapper readMap = new ObjectMapper();
+		User userFromMessage=new User();
+		try {
+			userFromMessage = readMap.readValue(message, User.class);
+		} catch (JsonParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Log.d("USER",userFromMessage.getPassword());
+		Log.d("MS",message);
+		this.user=userFromMessage;
+		Toast.makeText(this, userFromMessage.getLogin()+"zostałeś poprawnie zalogowany !", Toast.LENGTH_LONG).show();
+		//StaticUser.setUser(user);
+		//userService.userToActivity(userFromMessage);
+		SharedPreferences settings = getSharedPreferences("DefaultSettings", 0);
+		SharedPreferences.Editor editor = settings.edit();
+		editor.putString("USER", user.getLogin());
+		editor.putInt("USER_ID", user.getUserId());
+		editor.commit();*/
+		
+		
+	}
+	
+	
+	
 	
 }

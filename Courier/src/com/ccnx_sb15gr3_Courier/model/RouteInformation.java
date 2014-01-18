@@ -1,13 +1,22 @@
 package com.ccnx_sb15gr3_Courier.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import org.ccnx.android.ccnlib.JsonMessage;
 
 
 
-public class RouteInformation extends JsonMessage {
+
+
+
+
+public class RouteInformation extends JsonMessage implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer routeInformationId;
 	public Integer getRouteInformationId() {
 		return routeInformationId;
@@ -64,5 +73,7 @@ public class RouteInformation extends JsonMessage {
 	private float fuel;
 	private Date startTime;
 	private Date endTime;
+	
+
 
 }

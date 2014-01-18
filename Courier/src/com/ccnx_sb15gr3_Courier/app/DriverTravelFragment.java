@@ -1,6 +1,9 @@
 package com.ccnx_sb15gr3_Courier.app;
 
 
+import java.util.Calendar;
+import java.util.Date;
+
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +27,7 @@ public class DriverTravelFragment extends Fragment implements OnClickListener {
 	private TextView fromEditTxt;
 	private String destinationCity;
 	private int distance;
+	private AndriodDate startDate;
 
 	private long startTime = 0L;
 
@@ -63,6 +67,8 @@ public class DriverTravelFragment extends Fragment implements OnClickListener {
 						Toast.LENGTH_SHORT).show();
 
 			} else {
+				startDate= new AndriodDate();
+				startDate.setDate(Calendar.getInstance().getTime());
 				fromEditTxt.setClickable(false);
 
 				startTime = SystemClock.uptimeMillis();
@@ -97,7 +103,7 @@ public class DriverTravelFragment extends Fragment implements OnClickListener {
 						Intent intent = new Intent(getActivity(), DriverTravelSumm.class);
 						intent.putExtra("TIME", counterTxt.getText().toString());
 						intent.putExtra("START_POINT", fromEditTxt.getText().toString());
-						
+						intent.putExtra("START_DATE", startTime);
 						
 						startActivity(intent);
 						

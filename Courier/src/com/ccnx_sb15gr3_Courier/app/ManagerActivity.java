@@ -47,7 +47,7 @@ public class ManagerActivity extends FragmentActivity implements TabListener {
                     .setTabListener(this));
             }
         
-        login(login, password);
+      /*  login(login, password);*/
         	
         
         /**
@@ -109,7 +109,7 @@ public class ManagerActivity extends FragmentActivity implements TabListener {
 	 return super.onOptionsItemSelected(item);
 	}
 
-	private boolean login(String login, String password){
+	/*private boolean login(String login, String password){
 		final ProgressDialog ringProgressDialog = ProgressDialog.show(this, "Proszę czekać ...", "Logowanie ...", true);
 			   ringProgressDialog.setCancelable(true);
 			   
@@ -117,7 +117,7 @@ public class ManagerActivity extends FragmentActivity implements TabListener {
 		
 		return false;
 		
-	}
+	}*/
 	
 	
 }

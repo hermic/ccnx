@@ -13,5 +13,8 @@
 	<classpathentry kind="lib" path="libs/achartengine-1.1.0.jar"/>
 	<classpathentry kind="lib" path="/CourierService/lib/kxml2-2.3.0.jar"/>
 	<classpathentry kind="lib" path="libs/gson-2.2.4.jar"/>
+	<classpathentry kind="lib" path="libs/jackson-annotations-2.2.3.jar"/>
+	<classpathentry kind="lib" path="libs/jackson-core-2.2.3.jar"/>
+	<classpathentry kind="lib" path="libs/jackson-databind-2.2.3.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

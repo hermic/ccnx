@@ -1,6 +1,10 @@
 package org.ccnx.android.ccnlib;
 
+import java.util.UUID;
+
 public class JsonMessage {
+	
+	public String uuid = UUID.randomUUID().toString();
 	
 	public enum Request{LOGIN,GET_DRIVERS,GET_ROUTES,ADD_ROUTE};
 	

@@ -3,9 +3,11 @@ package com.ccnx_sb15gr3_Courier.app;
 import java.io.Serializable;
 
 import org.ccnx.android.ccnlib.JsonMessage.Request;
+import org.ccnx.android.ccnlib.RouteRequest;
 
 
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Message;
@@ -13,7 +15,12 @@ import android.util.Log;
 
 import com.ccnx_sb15gr3_Courier.app.chat.ChatCallback;
 import com.ccnx_sb15gr3_Courier.app.chat.ChatWorker;
+import com.ccnx_sb15gr3_Courier.model.Route;
+import com.ccnx_sb15gr3_Courier.model.RouteInformation;
+import com.ccnx_sb15gr3_Courier.model.RouteList;
 import com.ccnx_sb15gr3_Courier.model.User;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
 public class ConnectorTask extends AsyncTask<String, Void, String>  implements ChatCallback{
@@ -32,12 +39,16 @@ public class ConnectorTask extends AsyncTask<String, Void, String>  implements C
 
 	private String respondString;
 
+
+	private boolean isRespondProvided;
+	private Request request;
+
 @Override
 protected String doInBackground(String... urls) {
 	
 	
 
-	Request request=Request.valueOf(urls[0]);
+	request=Request.valueOf(urls[0]);
 	
 	
 	switch (request) {
@@ -52,7 +63,20 @@ protected String doInBackground(String... urls) {
 				user.setPassword(urls[2]);
 				user.setTag("LOGIN");
 				user.setRequest(true);
-				requestSting=gson.toJson(user);
+				//requestSting=gson.toJson(user);
+				ObjectMapper mapper = new ObjectMapper();
+				
+				
+				// mapper.writeValue(System.out, user);
+				try {
+					 requestSting = mapper.writeValueAsString(user);
+				
+				} catch (JsonProcessingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					
+					
+				}
 				Log.d("JSON", requestSting);
 				
 				
@@ -62,9 +86,69 @@ protected String doInBackground(String... urls) {
 	}
 	
 	case GET_DRIVERS:{
+		User user = new User();
+		user.setType("KIEROWCA");
+		user.setRequest(true);
+		user.setTag(Request.GET_DRIVERS.toString());
+		ObjectMapper mapper = new ObjectMapper();
+		
+		
+		// mapper.writeValue(System.out, user);
+		try {
+			 requestSting = mapper.writeValueAsString(user);
+		
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+			
+		}
+		Log.d("JSON", requestSting);
+		
 		break;
 	}
 	case GET_ROUTES:{
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+		RouteList routeList = new RouteList();
+		routeList.setUserID(userId);
+		routeList.setTag(Request.GET_ROUTES.toString());
+		routeList.setRequest(true);
+		
+		// mapper.writeValue(System.out, user);
+		try {
+			 requestSting = mapper.writeValueAsString(routeList);
+		
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+			
+		}
+	
+	Log.d("JSON", requestSting);
+		
+		break;
+	}
+	case ADD_ROUTE:{
+		Log.d("ADD ROUTE REQUEST", "");
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+	
+			// mapper.writeValue(System.out, user);
+			try {
+				 requestSting = mapper.writeValueAsString(route);
+			
+			} catch (JsonProcessingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+				
+			}
+		
+		Log.d("JSON", requestSting);
 		break;
 	}
 	
@@ -78,10 +162,40 @@ protected String doInBackground(String... urls) {
 	String response = "";
 
 	int i = 0;
-
-	while (true) {
+	while(true){
 		
-		if (respond.length()>2) {
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if(isReadyToSend){
+			Log.d("TASK:", "Sending..");
+			try {
+				Thread.sleep(1000);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			
+			UiToCcn(requestSting);
+			isReadyToSend=false;
+		}
+		
+		Log.d("TASK:", "IS WAITING --is response flag:"+isRespondProvided);
+		
+		if(isRespondProvided){
+			Log.d("TASK_RESPOND:", "Respond provided");
+			return respond;
+		}
+		
+	}
+	
+
+	/*while (true) {
+		
+		if (respond.contains("entered")) {
 			Log.d("PREPERE TO SENT","");
 			
 
@@ -94,13 +208,9 @@ protected String doInBackground(String... urls) {
 				
 				UiToCcn(requestSting);
 				
-				while(true){
-					
-					if(respond.contains("hejka")){
-						return respond;
+				while(!isRespondProvided){
 					
 					
-					}else{
 						
 						try {
 							Thread.sleep(1000);
@@ -109,24 +219,30 @@ protected String doInBackground(String... urls) {
 							e.printStackTrace();
 						}
 						
-					}
+					
 				}
+				return respond;
 				
 
 				
 			
 			
 		}
-	i++;}
+	i++;}*/
 
 }
-	
+private ProgressDialog ringProgressDialog;
+
+
+private RouteRequest route;
 	@Override
 	protected void onPreExecute() {
 		// TODO Auto-generated method stub
 		super.onPreExecute();
 		 _worker =  new ChatWorker(context, this);
 	     _worker.start("test", "/ccnchat", "10.0.2.2", "9695");
+	     ringProgressDialog= ProgressDialog.show(context, "Proszę czekać ...", "Logowanie ...", true);
+		   ringProgressDialog.setCancelable(true);
 	}
 
 	protected void UiToCcn(String s) {
@@ -136,7 +252,8 @@ protected String doInBackground(String... urls) {
     @Override
     protected void onPostExecute(String result) {
     // loginTxtView.setText(respond);
-     ccnxListener.messageToUI(respond);
+    	 ringProgressDialog.dismiss();
+    	 ccnxListener.messageToUI(respondString);
     }
 
 	@Override
@@ -144,15 +261,42 @@ protected String doInBackground(String... urls) {
 		Message msg = Message.obtain();
 		msg.obj = message;
 		Log.d("MESSAGE RECV",(String)msg.obj);
+
 		String messageTmp=(String)msg.obj;
+		if(messageTmp.contains("entered")){
+			Log.d("RECIVER:", "Connected -- READY TO SEND");
+			isReadyToSend=true;
+		
+			
+		}
 		respond=messageTmp;
-		if(messageTmp.contains(Request.LOGIN.toString()) && messageTmp.contains("isRespond\":false")){
+		
+		
+		if(messageTmp.contains("respond\":true")){
 			String tmp[]=messageTmp.split("]: ");
-			
-			User user=gson.fromJson(tmp[1], User.class);
-			
 			respondString=tmp[1];
 			Log.d("JSON RESPONSE",respondString);
+			
+			
+			if(messageTmp.contains(Request.LOGIN.toString())){
+				isRespondProvided=true;
+				
+			}else if(messageTmp.contains(Request.GET_DRIVERS.toString())){
+				isRespondProvided=true;
+				
+			
+		}else if(messageTmp.contains(Request.GET_ROUTES.toString())){
+			isRespondProvided=true;
+			
+		}else if(messageTmp.contains(Request.ADD_ROUTE.toString())){
+			
+			isRespondProvided=true;
+			
+		}
+		
+		
+						
+			
 		}
 	
 		
@@ -161,13 +305,21 @@ protected String doInBackground(String... urls) {
 		//Toast.makeText(getApplicationContext(), (String) msg.obj, Toast.LENGTH_LONG).show();*/
 		
 	}
-
+private int userId;
+	
+	public void setRouteInfo(RouteRequest route2){
+		this.route = route2;
+	}
 
 	@Override
 	public void ccnxServices(boolean ok) {
 		if ( ok ) {
+			
+		
 			//Toast.makeText(getApplicationContext(), "CCN Services now ready -- let's chat!", Toast.LENGTH_LONG).show();
 		isConnected=true;
+		Log.d("CCNX:Ready:", ""+isConnected);
+		recv("READY");
 			
 		}else{
 			//Toast.makeText(getApplicationContext(), "CCN Service error, cannot chat!", Toast.LENGTH_LONG).show();
@@ -185,6 +337,14 @@ private Context context;
 public ConnectorTask(CCNxListener ccnxListener, Context context){
 	this.context = context;
     this.ccnxListener=ccnxListener;
+}
+
+public int getUserId() {
+	return userId;
+}
+
+public void setUserId(int userId) {
+	this.userId = userId;
 }
 
   }
